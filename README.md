@@ -1,59 +1,66 @@
-Ansible Role: xxx
+Ansible Role: PostgreSQL
 =========
 
-在CentOS或者Ubuntu服务器上安装和配置xxxx 或xxx
+本 Role 在CentOS或者Ubuntu服务器上安装和配置 [PostgreSQL](https://www.postgresql.org/)。
 
-Requirements
-------------
+## Requirements
 
-无特殊要求,此 role 需要 root 用户权限,可以在playbook全局加入 `become: yes`,或者如下调用 role:
+运行本 Role，请确认符合如下的必要条件：
+
+| **Items**      | **Details** |
+| ------------------| ------------------|
+| Operating system | CentOS7.x Ubuntu18.04 AmazonLinux|
+| Python 版本 | Python2  |
+| Python 组件 |    |
+| Runtime |  |
+
+
+## Related roles
+
+本 Role 在语法上不依赖其他 role 的变量，但程序运行时需要确保已经运行：common。以 postgresql 为例：
 
 ```
-- hosts: all
   roles:
-    - role: role_xxx
-      become: yes
-```
-
-Role Variables
---------------
-
-下面列出了可用变量和默认值(请参见"defaults/main.yml"):
-
+   - {role: role_common, tags: "role_common"}   
+   - {role: role_cloud, tags: "role_cloud"}
+   - {role: role_postgresql, tags: "role_postgresql"}
 ```
 
 
+## Variables
+
+本 Role 主要变量以及使用方法如下：
+
+| **Items**      | **Details** | **Format**  | **是否初始化** |
+| ------------------| ------------------|-----|-----|
+| postgresql_version | [ 9.4, 9.5, 9.6, 10, 11 ] | 字符串 |是|
+| postgresql_root_password | [ "123456"] | 字符串 |是|
+
+注意：
+1. postgresql_version的值在 postgresql.yml 中由用户选择输入；
+2. postgresql_root_password 的值在主变量文件[main.yml](https://github.com/Websoft9/ansible-postgresql/blob/master/vars/main.yml)中定义。
+
+
+## Example
 
 ```
-
-
-
-Dependencies
-------------
-
-None
-
-Example Playbook
-----------------
-
-```
-- hosts: all
+- name: postgresql
+  hosts: all
   become: yes
+  become_method: sudo 
   vars_files:
-    - vars/main.yml
+    - vars/main.yml 
+
   roles:
-    - { role: role_xxx }
+   - {role: role_common, tags: "role_common"}   
+   - {role: role_cloud, tags: "role_cloud"}
+   - {role: role_postgresql, tags: "role_postgresql"}
+   - {role: role_docker, tags: "role_docker"}
+   - {role: role_docker_phppgadmin, tags: "role_docker_phppgadmin"}
+   - {role: role_init_password, tags: "role_init_password"}
+   - {role: role_end, tags: "role_end"} 
 ```
 
-`vars/main.yml` :
-```
+## FAQ
 
-
-
-```
-
-License
--------
-
-BSD
 
