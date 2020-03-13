@@ -63,8 +63,24 @@
     - {src: '/etc/postgresql/{{postgresqlver}}/main',dest: /data/config/postgresql}
     - {src: '/var/log/postgresql',dest: /data/logs/postgresql}
 
+# Enable PostgreSQL remote on Ubuntu
+- block:
+  - name: enable PostgrepSQL Remote connection I
+    copy:
+      src: pg_hba.conf
+      dest: /etc/postgresql/{{postgresqlver}}/main/
 
-
+  - name: enable PostgrepSQL Remote connection II
+    lineinfile:
+      dest: /etc/postgresql/{{postgresqlver}}/main/postgresql.conf
+      regexp: "#listen_addresses = 'localhost'"
+      line: "listen_addresses = '*'"
+      state: present
+    
+  - name: Start PostgreSQL Service
+    service: name=postgresql@{{postgresqlver}}-main.service state=restarted enabled=yes
+    
+  when: postgresql_remote
 
 - name: Check PostgreSQL
   shell: psql -V
