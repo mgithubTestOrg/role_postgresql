@@ -50,12 +50,10 @@
     name: postgres
     password: '{{postgresql_password}}'
 
-
 - name: Create config dir
   file:
     path: /data/config/postgresql
     state: directory
-
 
 - name: Create a PostgreSQL  symbolic link
   file:
@@ -66,6 +64,23 @@
     - {src: '/data/pgsql/pg_hba.conf',dest: /data/config/postgresql/pg_hba.conf}
     - {src: '/data/pgsql/pg_ident.conf',dest: /data/config/postgresql/pg_ident.conf}
     - {src: '/data/pgsql/postgresql.conf',dest: /data/config/postgresql/postgresql.conf}
+
+# PostgrepSQL on Centos 开启远程
+- block: 
+  - name: enable PostgrepSQL Remote connection I
+    copy:
+      src: pg_hba.conf
+      dest: /data/pgsql
+
+  - name: enable PostgrepSQL Remote connection II
+    copy:
+      src: postgresql.conf
+      dest: /data/pgsql
+    
+  - name: Start PostgreSQL Service
+    service: name=postgresql-{{postgresqlver}} state=restarted enabled=yes
+    
+  when: postgresql_remote
 
 - name: Check PostgreSQL
   shell: psql -V
