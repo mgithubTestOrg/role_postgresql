@@ -2,8 +2,7 @@
   yum:
     name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 
-
-- shell: echo "{{postgresqlver}}" | awk '{ if ($1<10)  printf("%.0f\n", 10*$1); else printf( $0 )}'
+- shell: echo "{{postgresql_version}}" | awk '{ if ($1<10)  printf("%.0f\n", 10*$1); else printf( $0 )}'
   register: psqlver
 
 - name: Install PostgreSQL
@@ -20,18 +19,18 @@
 
 - name: Change postgresql databases directory
   lineinfile:
-      dest: /lib/systemd/system/postgresql-{{ postgresqlver }}.service
-      regexp: 'Environment=PGDATA=/var/lib/pgsql/{{ postgresqlver }}/data/'
+      dest: /lib/systemd/system/postgresql-{{ postgresql_version }}.service
+      regexp: 'Environment=PGDATA=/var/lib/pgsql/{{ postgresql_version }}/data/'
       line: "Environment=PGDATA=/data/pgsql"
       state: present
 
 - name: initialize databases
-  command: /usr/pgsql-{{ postgresqlver }}/bin/postgresql{{psqlver.stdout}}-setup initdb 
-  when: postgresqlver < 10
+  command: /usr/pgsql-{{ postgresql_version }}/bin/postgresql{{psqlver.stdout}}-setup initdb 
+  when: postgresql_version < 10
 
 - name: initialize databases
-  command: /usr/pgsql-{{ postgresqlver }}/bin/postgresql-{{psqlver.stdout}}-setup initdb    
-  when: postgresqlver >= 10
+  command: /usr/pgsql-{{ postgresql_version }}/bin/postgresql-{{psqlver.stdout}}-setup initdb    
+  when: postgresql_version >= 10
 
 - name: Change postgresql databases METHOD
   lineinfile:
@@ -41,7 +40,7 @@
       state: present
 
 - name: Start PostgreSQL Service
-  service: name=postgresql-{{ postgresqlver }} state=started enabled=yes
+  service: name=postgresql-{{ postgresql_version }} state=started enabled=yes
 
 - name: Change postgresql password
   become: yes
@@ -78,7 +77,7 @@
       dest: /data/pgsql
     
   - name: Start PostgreSQL Service
-    service: name=postgresql-{{postgresqlver}} state=restarted enabled=yes
+    service: name=postgresql-{{postgresql_version}} state=restarted enabled=yes
     
   when: postgresql_remote
 
