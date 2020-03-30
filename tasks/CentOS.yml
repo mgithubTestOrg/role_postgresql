@@ -26,11 +26,11 @@
 
 - name: initialize databases
   command: /usr/pgsql-{{ postgresql_version }}/bin/postgresql{{psqlver.stdout}}-setup initdb 
-  when: postgresql_version < 10
+  when: postgresql_version <= "9.6"
 
 - name: initialize databases
   command: /usr/pgsql-{{ postgresql_version }}/bin/postgresql-{{psqlver.stdout}}-setup initdb    
-  when: postgresql_version >= 10
+  when: postgresql_version >= "10"
 
 - name: Change postgresql databases METHOD
   lineinfile:
