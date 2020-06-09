@@ -2,6 +2,14 @@
 - name: Install psycopg2 for Ansible PostgreSQL module
   pip:
     name: [psycopg2-binary,psycopg2]
+    
+- name: Create PostgreSQL Databases Directory
+  file:
+    path: /data/postgresql
+    state: directory
+    owner: postgres
+    group: postgres
+    mode: 0700
 
 #2 install by OS family    
 - include: "{{ansible_os_family}}.yml"
@@ -16,11 +24,3 @@
   shell: systemctl status postgresql | grep Active*
   register: check_postgresql_service
   notify: check_postgresql_service
-
-
-
-
-
-
-
-
