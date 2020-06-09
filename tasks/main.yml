@@ -10,7 +10,7 @@
 
 #4 display version and service state of components
 - name: Get MongoDB version
-  shell: sudo sh -c "mongo --version | grep MongoDB  1>> /data/logs/install_version.txt"
+  shell: sudo sh -c "psql -V  1>> /data/logs/install_version.txt"
 
 - name: Check PostgreSQL Service
   shell: systemctl status postgresql | grep Active*
