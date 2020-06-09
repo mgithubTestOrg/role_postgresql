@@ -23,18 +23,17 @@
       state: present
       
 - block:
-  - name: enable PostgrepSQL Remote connection I
-    copy:
-      src: pg_hba.conf
-      dest: /etc/postgresql/{{postgresql_version}}/main/
-
-  - name: enable PostgrepSQL Remote connection II
+  - name: enable PostgrepSQL Remote connection by modify postgresql.conf
     lineinfile:
       dest: /etc/postgresql/{{postgresql_version}}/main/postgresql.conf
       regexp: "#listen_addresses = 'localhost'"
       line: "listen_addresses = '*'"
       state: present
-      
+
+  - name: enable PostgrepSQL Remote connection by modify pg_hba.conf
+    lineinfile:
+      dest: /etc/postgresql/{{postgresql_version}}/main/pg_hba.conf
+      line: "host    all             all             0.0.0.0/0            md5"
   when: postgresql_remote
 
 - name: Restart PostgreSQL Service
