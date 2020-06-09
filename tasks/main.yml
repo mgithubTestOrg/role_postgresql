@@ -1,7 +1,9 @@
 # 1 prepare for installation
+# psycopg2 error, so psycopg2-binary package instead
+
 - name: Install psycopg2 for Ansible PostgreSQL module
   pip:
-    name: [psycopg2-binary,psycopg2]
+    name: psycopg2-binary
     
 - name: Create PostgreSQL Databases Directory
   file:
