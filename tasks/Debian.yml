@@ -1,4 +1,6 @@
 ---
+# Ubuntu 20.04/18.04/16.04
+
 - name: Add PostgreSQL repository key
   apt_key:
     url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
@@ -8,9 +10,9 @@
     repo: 'deb http://apt.postgresql.org/pub/repos/apt/ {{ansible_distribution_release}}-pgdg main'
     filename: pgdg
 
-- name: Install PostgreSQL{{postgresql_version}}
+- name: Install PostgreSQL {{postgresql_version}}
   apt:  
-    name: ['postgresql-{{postgresql_version}}',python-psycopg2]
+    name: ['postgresql-{{postgresql_version}}']
 
 - name: Create Databases Directory
   file:
