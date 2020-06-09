@@ -1,7 +1,7 @@
 # 1 prepare for installation
-- name: Install psycopg2
+- name: Install psycopg2 for Ansible PostgreSQL module
   pip:
-    name: psycopg2-binary
+    name: [psycopg2-binary,psycopg2]
 
 #2 install by OS family    
 - include: "{{ansible_os_family}}.yml"
