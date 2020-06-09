@@ -48,7 +48,7 @@
     
 - name: Create soft link of PostgreSQL
   shell: |
-    ln -sf /var/lib/postgresql/{{postgresql_version}} /data/postgresql/data
+    ln -sf /var/lib/postgresql/{{postgresql_version}} /data/postgresql/pgdata
     ln -sf /etc/postgresql/{{postgresql_version}} /data/postgresql/config
     ln -sf /etc/postgresql/{{postgresql_version}}/main/postgresql.conf /data/postgresql
     ln -sf /data/postgresql/config /data/config/postgresql
