@@ -5,6 +5,13 @@
   pip:
     name: psycopg2-binary
     
+- name: Create PostgreSQL System User
+  user:
+    name: postgres 
+    create_home: no 
+    home: /data/postgresql
+    shell: /usr/sbin/nologin
+    
 - name: Create PostgreSQL Databases Directory
   file:
     path: /data/postgresql
