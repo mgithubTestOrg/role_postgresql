@@ -81,8 +81,3 @@
     service: name=postgresql@{{postgresql_version}}-main.service state=restarted enabled=yes
     
   when: postgresql_remote
-
-- name: Check PostgreSQL
-  shell: psql -V
-  register: postgresql_ver
-  notify: [PostgreSQL Version,Check PostgreSQL Server for Ubuntu]
