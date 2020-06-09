@@ -13,7 +13,7 @@
     
 - name: Create dir for PostgreSQL
   file:
-    path: '/data/{{item}}'
+    path: '/data/postgresql/{{item}}'
     state: directory
   with_items:
     - pgdata
