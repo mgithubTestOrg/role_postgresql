@@ -1,23 +1,12 @@
+# 1 prepare for installation
 - name: Install psycopg2
   pip:
     name: psycopg2-binary
-    
-- import_tasks: CentOS.yml
-  when: ansible_distribution == 'CentOS'
 
-- import_tasks: Ubuntu.yml
-  when: ansible_distribution == 'Ubuntu'
+#2 install by OS family    
+- include: "{{ansible_os_family}}.yml"
 
-- name: Create credentials Folder
-  file:
-    path: /credentials
-    state: directory
-
-- name: Write Databases Password
-  template:
-    src: password.txt.jinja2
-    dest: /credentials/password.txt
-    mode: 644
+#3 configure
 
 
 
