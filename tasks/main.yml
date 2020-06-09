@@ -5,7 +5,7 @@
     
 - name: Create PostgreSQL Databases Directory
   file:
-    path: /data/postgresql
+    path: /data/pgsql
     state: directory
     owner: postgres
     group: postgres
