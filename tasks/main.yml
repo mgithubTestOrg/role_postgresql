@@ -16,7 +16,7 @@
     path: '/data/{{item}}'
     state: directory
   with_items:
-    - data
+    - pgdata
     - config
 
 #2 install by OS family    
