@@ -1,7 +1,7 @@
 # PostgreSQL Notes
 
 组件名称：PostgreSQL  
-安装文档：https://www.postgresql.org/docs
+安装文档：https://www.postgresql.org/docs  
 配置文档：https://www.postgresql.org/docs  
 支持平台： Debian家族 | RHEL家族 | Windows | Kubernetes |Docker  
 
