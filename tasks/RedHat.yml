@@ -1,5 +1,6 @@
 # Red Hat Enterprise Linux,CentOS,Fedora,Scientific Linux,Oracle Linux
 # 9.5.9.6 need convert to 95,96 for some step, e.g yum install postgresql95
+
 - name: Install the repository RPM
   yum:
     name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
@@ -11,10 +12,6 @@
     
 - name: Initialize databases
   command: /usr/pgsql-{{ postgresql_version }}/bin/postgresql{{ postgresql_version | regex_replace() }}-setup initdb 
-
-- name: Create soft link for PostgreSQL
-  shell: |
-    ln -sf /usr/lib/systemd/system/postgresql-{{ postgresql_version }}.service  /etc/systemd/system/postgresql.service
   
 - name: Start PostgreSQL Service
   service: name=postgresql-{{ postgresql_version }} state=started enabled=yes
@@ -25,3 +22,12 @@
   postgresql_user:
     name: postgres
     password: '{{postgresql_password}}'
+ 
+- name: Create soft link of PostgreSQL
+  shell: |
+    ln -sf /usr/lib/systemd/system/postgresql-{{ postgresql_version }}.service  /etc/systemd/system/postgresql.service
+    ln -sf /var/lib/pgsql/{{postgresql_version}} /data/postgresql/pgdata
+    ln -sf /usr/pgsql-{{postgresql_version}}/share /data/postgresql/config
+    ln -sf /usr/pgsql-{{postgresql_version}}/share /data/config/postgresql
+    #ln -sf /var/log/postgresql /data/logs
+    #ln -sf /etc/postgresql/{{postgresql_version}}/main/postgresql.conf /data/postgresql
