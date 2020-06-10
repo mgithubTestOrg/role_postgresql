@@ -27,7 +27,8 @@
   shell: |
     ln -sf /usr/lib/systemd/system/postgresql-{{ postgresql_version }}.service  /etc/systemd/system/postgresql.service
     ln -sf /var/lib/pgsql/{{postgresql_version}} /data/postgresql/pgdata
-    ln -sf /usr/pgsql-{{postgresql_version}}/share /data/postgresql/config
-    ln -sf /usr/pgsql-{{postgresql_version}}/share /data/config/postgresql
-    #ln -sf /var/log/postgresql /data/logs
-    #ln -sf /etc/postgresql/{{postgresql_version}}/main/postgresql.conf /data/postgresql
+    ln -sf /var/lib/pgsql/{{postgresql_version}}/data/pg_hba.conf /data/postgresql/config
+    ln -sf /var/lib/pgsql/{{postgresql_version}}/data/postgresql.conf /data/postgresql/config
+    ln -sf /var/lib/pgsql/{{postgresql_version}}/data/pg_ident.conf /data/postgresql/config
+    ln -sf /data/postgresql/config /data/config/postgresql
+    ln -sf /var/lib/pgsql/{{postgresql_version}}/data/log /data/postgresql
