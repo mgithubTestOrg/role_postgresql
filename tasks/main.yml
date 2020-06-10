@@ -8,7 +8,6 @@
 - name: Create PostgreSQL System User
   user:
     name: postgres 
-    create_home: no 
     shell: /sbin/nologin
     
 - name: Create PostgreSQL Databases Directory
