@@ -4,7 +4,8 @@
 - name: Install psycopg2 for Ansible PostgreSQL module
   pip:
     name: psycopg2-binary
-    
+
+# -s /bin/bash, don't use /sbin/nologin because it will let postgresql-setup initdb error
 - name: Create PostgreSQL System User
   user:
     name: postgres 
