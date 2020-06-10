@@ -1,5 +1,6 @@
 # Red Hat Enterprise Linux,CentOS,Fedora,Scientific Linux,Oracle Linux
 # 9.5.9.6 need convert to 95,96 for some step, e.g yum install postgresql95
+# yum install don't initdb, so we must initdb and only can run one times
 
 # e.g 9.5 to 95
 - set_fact:
