@@ -12,6 +12,10 @@
 - name: Initialize databases
   command: /usr/pgsql-{{ postgresql_version }}/bin/postgresql{{ postgresql_version | regex_replace() }}-setup initdb 
 
+- name: Create soft link for PostgreSQL
+  shell: |
+    ln -sf /usr/lib/systemd/system/postgresql-{{ postgresql_version }}.service  /etc/systemd/system/postgresql.service
+  
 - name: Start PostgreSQL Service
   service: name=postgresql-{{ postgresql_version }} state=started enabled=yes
 
