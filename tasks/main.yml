@@ -24,6 +24,9 @@
   file:
     path: '/data/postgresql/{{item}}'
     state: directory
+    owner: postgres
+    group: postgres
+    mode: 0700
   with_items:
     - pgdata
     - config
