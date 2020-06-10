@@ -8,7 +8,7 @@
 - name: Create PostgreSQL System User
   user:
     name: postgres 
-    shell: /sbin/nologin
+    shell: /bin/bash
     
 - name: Create PostgreSQL Databases Directory
   file:
