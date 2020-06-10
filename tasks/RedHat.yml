@@ -15,7 +15,9 @@
     state: latest
     
 - name: Initialize databases
-  command: /usr/pgsql-{{ postgresql_version }}/bin/postgresql{{ postgresql_version_regex }}-setup initdb 
+  command: |
+    rm -rf /var/lib/pgsql/{{ postgresql_version }}/data
+    /usr/pgsql-{{ postgresql_version }}/bin/postgresql{{ postgresql_version_regex }}-setup initdb 
   
 - name: Change postgresql databases METHOD
   lineinfile:
