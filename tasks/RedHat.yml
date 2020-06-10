@@ -1,17 +1,21 @@
 # Red Hat Enterprise Linux,CentOS,Fedora,Scientific Linux,Oracle Linux
 # 9.5.9.6 need convert to 95,96 for some step, e.g yum install postgresql95
 
+# e.g 9.5 to 95
+- set_fact:
+    postgresql_version_regex: "{{ postgresql_version | regex_replace('^(?P<before>.+).(?P<after>\\d+)$', '\\g<before>\\g<after>')}}"
+
 - name: Install the repository RPM
   yum:
     name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 
 - name: Install PostgreSQL
   yum: 
-    name: ["postgresql{{ postgresql_version | regex_replace() }}","postgresql{{ postgresql_version | regex_replace() }}-server"]
+    name: ["postgresql{{ postgresql_version_regex }}","postgresql{{ postgresql_version_regex }}-server"]
     state: latest
     
 - name: Initialize databases
-  command: /usr/pgsql-{{ postgresql_version }}/bin/postgresql{{ postgresql_version | regex_replace() }}-setup initdb 
+  command: /usr/pgsql-{{ postgresql_version }}/bin/postgresql{{ postgresql_version_regex }}-setup initdb 
   
 - name: Change postgresql databases METHOD
   lineinfile:
