@@ -13,6 +13,27 @@
 - name: Initialize databases
   command: /usr/pgsql-{{ postgresql_version }}/bin/postgresql{{ postgresql_version | regex_replace() }}-setup initdb 
   
+- name: Change postgresql databases METHOD
+  lineinfile:
+      dest: /var/lib/pgsql/{{postgresql_version}}/data/pg_hba.conf
+      regexp: 'host    all             all             127.0.0.1/32            ident'
+      line: "host    all             all             127.0.0.1/32            md5"
+      state: present
+      
+- block:
+  - name: enable PostgrepSQL Remote connection by modify postgresql.conf
+    lineinfile:
+      dest: /var/lib/pgsql/{{postgresql_version}}/data/postgresql.conf
+      regexp: "#listen_addresses = 'localhost'"
+      line: "listen_addresses = '*'"
+      state: present
+
+  - name: enable PostgrepSQL Remote connection by modify pg_hba.conf
+    lineinfile:
+      dest: /var/lib/pgsql/{{postgresql_version}}/data/pg_hba.conf
+      line: "host    all             all             0.0.0.0/0            md5"
+  when: postgresql_remote
+  
 - name: Start PostgreSQL Service
   service: name=postgresql-{{ postgresql_version }} state=started enabled=yes
 
