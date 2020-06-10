@@ -15,9 +15,14 @@
     name: ["postgresql{{ postgresql_version_regex }}","postgresql{{ postgresql_version_regex }}-server"]
     state: latest
     
+- name: Ansible check file exists
+  stat:
+    path: "/var/lib/pgsql/{{postgresql_version}}/data/pg_hba.conf"
+  register: result
+    
 - name: Initialize databases
   command: /usr/pgsql-{{ postgresql_version }}/bin/postgresql{{ postgresql_version_regex }}-setup initdb 
-  when: postgresql_config_path is not exists
+  when: not result.stat.exists
   
 - name: Change postgresql databases METHOD
   lineinfile:
