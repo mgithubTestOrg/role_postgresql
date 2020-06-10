@@ -1,3 +1,7 @@
-postgresql_version: "9.5"    # 9.4 9.5 9.6 10 11 
-postgresql_password: "123456" #  默认密码
+# 9.4 9.5 9.6 10 11 12 13
+postgresql_version: "9.5"    
+
+# administrator password for postgres user
+postgresql_password: "123456"
+
 postgresql_remote: False
