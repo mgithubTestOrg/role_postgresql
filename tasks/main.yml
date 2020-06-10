@@ -9,7 +9,6 @@
   user:
     name: postgres 
     create_home: no 
-    home: /data/postgresql
     shell: /usr/sbin/nologin
     
 - name: Create PostgreSQL Databases Directory
