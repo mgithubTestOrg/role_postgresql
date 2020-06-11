@@ -21,8 +21,12 @@
     path: "/var/lib/pgsql/{{postgresql_version}}/data/pg_hba.conf"
   register: result
     
-- name: Initialize databases
+- name: Initialize databases for 9.x
   command: /usr/pgsql-{{ postgresql_version }}/bin/postgresql{{ postgresql_version_regex }}-setup initdb 
+  when: not result.stat.exists
+
+- name: Initialize databases for 1x
+  command: /usr/pgsql-{{ postgresql_version }}/bin/postgresql-{{ postgresql_version_regex }}-setup initdb 
   when: not result.stat.exists
   
 - name: Change postgresql databases METHOD
