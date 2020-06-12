@@ -2,7 +2,7 @@
 
 ## To do
 
-1. 可视化管理工具
+1. 可视化管理工具 pgAdmin
 2. AmazonLinux支持
 
 ## Logs
