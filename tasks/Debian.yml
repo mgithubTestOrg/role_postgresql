@@ -53,3 +53,4 @@
     ln -sf /etc/postgresql/{{postgresql_version}}/main/postgresql.conf /data/postgresql
     ln -sf /data/postgresql/config /data/config/postgresql
     ln -sf /var/log/postgresql /data/logs
+    ln -sf /usr/lib/postgresql/{{postgresql_version}}/bin/pg_upgrade /usr/bin
