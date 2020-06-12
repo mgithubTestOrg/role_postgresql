@@ -72,3 +72,4 @@
     ln -sf /var/lib/pgsql/{{postgresql_version}}/data/pg_ident.conf /data/postgresql/config
     ln -sf /data/postgresql/config /data/config/postgresql
     ln -sf /var/lib/pgsql/{{postgresql_version}}/data/log /data/postgresql
+    ln -sf /usr/pgsql-{{ postgresql_version }}/bin/pg_upgrade /usr/bin
