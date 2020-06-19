@@ -63,4 +63,6 @@ Ansible Role: PostgreSQL
 
 ## FAQ
 
+#### PostgreSQL 默认安装的管理员用户名是什么？
 
+postgres
