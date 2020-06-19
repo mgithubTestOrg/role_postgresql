@@ -36,15 +36,6 @@
 #3 configure
 
 #4 createdb if need
-- name: Create more PostgreSQL user
-  become: yes
-  become_user: postgres
-  postgresql_user:
-    name: postgres
-    password: '{{postgresql_password}}'
-  with_items: "{{docker_applications}}"
-  when: docker_applications is not none and docker_applications != ""
-
 - name: Create PostgreSQL extra databases 
   become: yes
   become_user: postgres
