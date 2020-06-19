@@ -36,7 +36,23 @@
 #3 configure
 
 #4 createdb if need
+- name: Create more PostgreSQL user
+  become: yes
+  become_user: postgres
+  postgresql_user:
+    name: postgres
+    password: '{{postgresql_password}}'
+  with_items: "{{docker_applications}}"
+  when: docker_applications is not none and docker_applications != ""
 
+- name: Create PostgreSQL extra databases 
+  become: yes
+  become_user: postgres
+  postgresql_db:
+    name: "{{ item.name }}"
+    encoding: UTF-8
+  with_items: "{{ postgresql_databases }}"
+  when: (postgresql_databases is defined) and (postgresql_databases != none)
 
 #5 display version and service state of components
 - name: Get MongoDB version
