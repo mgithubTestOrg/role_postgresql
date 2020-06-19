@@ -35,7 +35,10 @@
 
 #3 configure
 
-#4 display version and service state of components
+#4 createdb if need
+
+
+#5 display version and service state of components
 - name: Get MongoDB version
   shell: sudo sh -c "psql -V  1>> /data/logs/install_version.txt"
 
