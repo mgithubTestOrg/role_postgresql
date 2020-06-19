@@ -44,21 +44,18 @@ Ansible Role: PostgreSQL
 ## Example
 
 ```
-- name: postgresql
-  hosts: all
-  become: yes
-  become_method: sudo 
-  vars_files:
-    - vars/main.yml 
+#1 create database wordpress and user wordpress
+postgresql_databases:
+ - name: wordpress
+   encoding: utf8
 
-  roles:
-   - {role: role_common, tags: "role_common"}   
-   - {role: role_cloud, tags: "role_cloud"}
-   - {role: role_postgresql, tags: "role_postgresql"}
-   - {role: role_docker, tags: "role_docker"}
-   - {role: role_docker_phppgadmin, tags: "role_docker_phppgadmin"}
-   - {role: role_init_password, tags: "role_init_password"}
-   - {role: role_end, tags: "role_end"} 
+#2 create database wordpress,joomla and user wordpress,joomla
+postgresql_databases:
+ - name: wordpress
+   encoding: utf8
+ - name: joomla
+   encoding: utf8
+
 ```
 
 ## FAQ
