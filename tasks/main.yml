@@ -35,7 +35,7 @@
 
 #3 configure
 
-#4 createdb if need
+#4 create db and user if need
 - name: Create PostgreSQL extra databases 
   become: yes
   become_user: postgres
