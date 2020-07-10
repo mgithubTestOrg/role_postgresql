@@ -1,7 +1,7 @@
 Ansible Role: PostgreSQL
 =========
 
-本 Role 在CentOS或者Ubuntu服务器上安装和配置 [PostgreSQL](https://www.postgresql.org/)。
+本 Role 在CentOS或者Ubuntu服务器上安装、创建数据库、创建用户和配置 [PostgreSQL](https://www.postgresql.org/)。
 
 ## Requirements
 
