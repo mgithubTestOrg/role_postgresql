@@ -9,12 +9,12 @@
 
 - name: Install the repository RPM
   yum:
-    name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+    name: "{{postgresql_repo_meta[postgresql_version].RedHat}}"
   when: postgresql_version > "9.4"
 
 - name: Install the repository RPM
   yum:
-    name: https://download.postgresql.org/pub/repos/yum/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-3.noarch.rpm
+    name: "{{postgresql_repo_meta[postgresql_version].RedHat}}"
   when: postgresql_version == "9.4"
   
 - name: Install PostgreSQL
