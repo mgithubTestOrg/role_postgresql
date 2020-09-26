@@ -8,7 +8,7 @@ postgresql_password: "123456"
 
 postgresql_remote: False
 
-postgresql_meta:
+postgresql_repo_meta:
   "9.4":
       RedHat: "postgresql"
       Debian: "postgresql"
