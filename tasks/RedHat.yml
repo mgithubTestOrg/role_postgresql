@@ -10,12 +10,6 @@
 - name: Install the repository RPM
   yum:
     name: "{{postgresql_repo_meta[postgresql_version].RedHat}}"
-  when: postgresql_version > "9.4"
-
-- name: Install the repository RPM
-  yum:
-    name: "{{postgresql_repo_meta[postgresql_version].RedHat}}"
-  when: postgresql_version == "9.4"
   
 - name: Install PostgreSQL
   yum: 
