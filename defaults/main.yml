@@ -7,3 +7,26 @@ postgresql_version: "9.5"
 postgresql_password: "123456"
 
 postgresql_remote: False
+
+postgresql_meta:
+  "9.4":
+      RedHat: "postgresql"
+      Debian: "postgresql"
+  "9.5":
+      RedHat: "postgresql"
+      Debian: "postgresql"
+  "9.6":
+      RedHat: "postgresql"
+      Debian: "postgresql"
+  "10":
+      RedHat: "postgresql"
+      Debian: "postgresql"
+  "11":
+      RedHat: "postgresql"
+      Debian: "postgresql"
+  "12":
+      RedHat: "postgresql"
+      Debian: "postgresql"
+  "13":
+      RedHat: "postgresql"
+      Debian: "postgresql"
