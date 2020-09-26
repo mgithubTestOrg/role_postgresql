@@ -10,23 +10,23 @@ postgresql_remote: False
 
 postgresql_repo_meta:
   "9.4":
-      RedHat: "postgresql"
+      RedHat: "https://download.postgresql.org/pub/repos/yum/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-3.noarch.rpm"
       Debian: "postgresql"
   "9.5":
-      RedHat: "postgresql"
+      RedHat: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
       Debian: "postgresql"
   "9.6":
-      RedHat: "postgresql"
+      RedHat: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
       Debian: "postgresql"
   "10":
-      RedHat: "postgresql"
+      RedHat: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
       Debian: "postgresql"
   "11":
-      RedHat: "postgresql"
+      RedHat: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
       Debian: "postgresql"
   "12":
-      RedHat: "postgresql"
+      RedHat: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
       Debian: "postgresql"
   "13":
-      RedHat: "postgresql"
+      RedHat: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
       Debian: "postgresql"
