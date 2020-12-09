@@ -29,19 +29,15 @@
   with_items:
     - pgdata
     - config
-
-#2 install by OS family    
+ 
 - include: "{{ansible_os_family}}.yml"
 
-#3 configure
-
-#4 create db  if need
 - name: Create PostgreSQL extra databases 
   become: yes
   become_user: postgres
   postgresql_db:
     name: "{{ item.name }}"
-    encoding: {{ item.encoding }}"
+    encoding: "{{ item.encoding | default('UTF-8',true) }}"
   with_items: "{{ postgresql_databases }}"
   when: (postgresql_databases is defined) and (postgresql_databases != none)
 
@@ -51,8 +47,8 @@
   postgresql_user:
     db: "{{ item.db }}"
     name: "{{ item.name }}"
-    password: {{ item.password }}"
-    priv: {{ item.priv }}"
+    password: "{{ item.password }}"
+    priv: "{{ item.priv | default('ALL',true) }}"
   with_items: "{{ postgresql_users }}"
   when: (postgresql_users is defined) and (postgresql_users != none)
   
