@@ -56,6 +56,23 @@ postgresql_databases:
  - name: joomla
    encoding: utf8
 
+#3 Create user awx
+postgresql_users:
+  - name: awx
+    db: awx
+    password: 123456
+    priv: 'awx/*:ALL'
+
+#4 Create user awx,canvas
+postgresql_users:
+  - name: awx
+    db: awx
+    password: 123456
+    priv: 'awx/*:ALL'
+  - name: canvas
+    db: canvas
+    password: 123456
+    priv: ALL
 ```
 
 ## FAQ
