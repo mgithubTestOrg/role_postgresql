@@ -35,16 +35,27 @@
 
 #3 configure
 
-#4 create db and user if need
+#4 create db  if need
 - name: Create PostgreSQL extra databases 
   become: yes
   become_user: postgres
   postgresql_db:
     name: "{{ item.name }}"
-    encoding: UTF-8
+    encoding: {{ item.encoding }}"
   with_items: "{{ postgresql_databases }}"
   when: (postgresql_databases is defined) and (postgresql_databases != none)
 
+- name: Create PostgreSQL extra users 
+  become: yes
+  become_user: postgres
+  postgresql_user:
+    db: "{{ item.db }}"
+    name: "{{ item.name }}"
+    password: {{ item.password }}"
+    priv: {{ item.priv }}"
+  with_items: "{{ postgresql_users }}"
+  when: (postgresql_users is defined) and (postgresql_users != none)
+  
 #5 display version and service state of components
 - name: Get MongoDB version
   shell: sudo sh -c "psql -V  1>> /data/logs/install_version.txt"
