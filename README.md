@@ -61,14 +61,14 @@ postgresql_users:
   - name: awx
     db: awx
     password: 123456
-    priv: 'awx/*:ALL'
+    priv: ALL
 
 #4 Create user awx,canvas
 postgresql_users:
   - name: awx
     db: awx
     password: 123456
-    priv: 'awx/*:ALL'
+    priv: ALL
   - name: canvas
     db: canvas
     password: 123456
