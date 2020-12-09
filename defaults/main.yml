@@ -8,6 +8,16 @@ postgresql_password: "123456"
 
 postgresql_remote: False
 
+postgresql_databases: []
+#  - name: awx 
+#    encoding: UTF-8
+  
+postgresql_users: []
+#  - name: awx
+#    db: awx
+#    password: 123456
+#    priv: 'awx/*:ALL'
+
 postgresql_repo_meta:
   "9.4":
       RedHat: "https://download.postgresql.org/pub/repos/yum/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-3.noarch.rpm"
