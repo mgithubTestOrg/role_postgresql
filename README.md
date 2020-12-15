@@ -35,6 +35,7 @@ Ansible Role: PostgreSQL
 | ------------------| ------------------|-----|-----|
 | postgresql_version | [ 9.4, 9.5, 9.6, 10, 11 ] | 字符串 |是|
 | postgresql_root_password | [ "123456"] | 字符串 |是|
+| postgresql_users | refer to [postgresql_user_module](https://docs.ansible.com/ansible/2.9/modules/postgresql_user_module.html#parameter-priv) |  List |No |
 
 注意：
 1. postgresql_version的值在 postgresql.yml 中由用户选择输入；
