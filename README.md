@@ -56,12 +56,18 @@ postgresql_databases:
  - name: joomla
    encoding: utf8
 
-#3 Create user awx
+#Create user awx with ALL for priv by default
 postgresql_users:
   - name: awx
     db: awx
     password: 123456
-    priv: ALL
+
+#Create user awx with SELECT for priv
+postgresql_users:
+  - name: awx
+    db: awx
+    password: 123456
+    priv: SELECT
 
 #4 Create user awx,canvas
 postgresql_users:
