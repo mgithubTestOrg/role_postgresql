@@ -84,6 +84,10 @@ postgresql_users:
 
 ## FAQ
 
-#### PostgreSQL 默认安装的管理员用户名是什么？
+#### What the default administrator username of PostgreSQL?
 
 postgres
+
+#### What the default role attribute for add new user?
+
+LOGIN
