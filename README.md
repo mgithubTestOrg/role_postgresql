@@ -62,12 +62,12 @@ postgresql_users:
     db: awx
     password: 123456
 
-#Create user awx with SELECT for priv
+#Create user awx with CREATE for priv
 postgresql_users:
   - name: awx
     db: awx
     password: 123456
-    priv: SELECT
+    priv: CREATE
 
 #4 Create user awx,canvas
 postgresql_users:
