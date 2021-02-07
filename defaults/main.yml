@@ -1,5 +1,6 @@
-# Ubuntu: 9.4 9.5 9.6 10 11 12 13
-# CentOS: 9.5 9.6 10 11 12 13
+# Ubuntu 20.04: 9.4 9.5 9.6 10 11 12 13
+# CentOS7: 9.5 9.6 10 11 12 13
+# AmazonLinux2: not supoort
 
 postgresql_version: "9.5"    
 
