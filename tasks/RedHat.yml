@@ -19,6 +19,7 @@
       wget https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
       rpm2cpio pgdg-redhat-repo-latest.noarch.rpm | cpio -div
       mv /tmp/etc/yum.repos.d/pgdg-redhat-all.repo /etc/yum.repos.d/pgdg-redhat-all.repo
+      mv /tmp/etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG /etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
       sed -i 's/rhel-$releasever-$basearch/rhel-7.9-x86_64/g' /etc/yum.repos.d/pgdg-redhat-all.repo
       rm -rf /tmp/etc/  /tmp/pgdg-redhat-repo-latest.noarch.rpm
     args:
